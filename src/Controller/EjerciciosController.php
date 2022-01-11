@@ -64,4 +64,16 @@ class EjerciciosController extends AbstractController
             'alumnos' => $alumnos
         ]);
     }
+
+    /**
+     * @Route("/ap6/{anio}", name="apartado6", requirements={"anio": "\d+"})
+     */
+    public function alumnosAnioNacimiento(AlumnoRepository $alumnoRepository, int $anio): Response
+    {
+        $alumnos = $alumnoRepository->findAnioNacimientoOrdenado($anio);
+        return $this->render('ejercicios/ap6.html.twig', [
+            'alumnos' => $alumnos,
+            'anio' => $anio
+        ]);
+    }
 }

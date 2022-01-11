@@ -52,4 +52,16 @@ class AlumnoRepository extends ServiceEntityRepository
             ->setParameter('fin', $fin)
             ->getResult();
     }
+
+    public function findAnioNacimientoOrdenado(int $anio) : array
+    {
+        $inicio = new \DateTime($anio . '-01-01 00:00:00');
+        $fin = new \DateTime(($anio + 1) . '-01-01 00:00:00');
+
+        return $this->getEntityManager()
+            ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.fechaNacimiento >= :inicio AND a.fechaNacimiento < :fin ORDER BY a.fechaNacimiento DESC")
+            ->setParameter('inicio', $inicio)
+            ->setParameter('fin', $fin)
+            ->getResult();
+    }
 }
