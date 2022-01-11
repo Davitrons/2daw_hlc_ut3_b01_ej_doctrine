@@ -17,4 +17,11 @@ class AlumnoRepository extends ServiceEntityRepository
     {
         return $this->findBy(['nombre' => 'María']);
     }
+
+    public function findNombreNoMaria() : array
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.nombre != 'María'")
+            ->getResult();
+    }
 }

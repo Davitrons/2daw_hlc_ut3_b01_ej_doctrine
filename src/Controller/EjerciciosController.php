@@ -19,4 +19,15 @@ class EjerciciosController extends AbstractController
             'alumnos' => $alumnos
         ]);
     }
+
+    /**
+     * @Route("/ap2", name="apartado2")
+     */
+    public function alumnosNoLlamadosMaria(AlumnoRepository $alumnoRepository): Response
+    {
+        $alumnos = $alumnoRepository->findNombreNoMaria();
+        return $this->render('ejercicios/ap2.html.twig', [
+            'alumnos' => $alumnos
+        ]);
+    }
 }
