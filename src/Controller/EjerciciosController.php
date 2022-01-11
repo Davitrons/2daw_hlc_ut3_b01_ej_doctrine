@@ -53,4 +53,15 @@ class EjerciciosController extends AbstractController
             'alumnos' => $alumnos
         ]);
     }
+
+    /**
+     * @Route("/ap5", name="apartado5")
+     */
+    public function alumnosO1997(AlumnoRepository $alumnoRepository): Response
+    {
+        $alumnos = $alumnoRepository->findAnioNacimiento(1997);
+        return $this->render('ejercicios/ap5.html.twig', [
+            'alumnos' => $alumnos
+        ]);
+    }
 }
