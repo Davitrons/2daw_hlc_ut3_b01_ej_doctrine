@@ -28,7 +28,7 @@ class AlumnoRepository extends ServiceEntityRepository
     public function findNombre(string $nombre) : array
     {
         return $this->getEntityManager()
-            ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.nombre = :name")
+            ->createQuery("SELECT a, g FROM App\\Entity\\Alumno a JOIN a.grupo g WHERE a.nombre = :name")
             ->setParameter('name', $nombre)
             ->getResult();
     }
