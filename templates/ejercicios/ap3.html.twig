@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ejercicios{% endblock %}
+
+{% block body %}
+    <h1>Apartado 3: Alumnado llamado {{ nombre }}</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Grupo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+                <tr>
+                    <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.apellidos }}</td>
+                    <td>{{ alumno.grupo.descripcion }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

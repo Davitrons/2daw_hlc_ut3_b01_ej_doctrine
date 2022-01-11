@@ -30,4 +30,16 @@ class EjerciciosController extends AbstractController
             'alumnos' => $alumnos
         ]);
     }
+
+    /**
+     * @Route("/ap3/{nombre}", name="apartado3")
+     */
+    public function alumnosPorNombre(AlumnoRepository $alumnoRepository, string $nombre): Response
+    {
+        $alumnos = $alumnoRepository->findNombre($nombre);
+        return $this->render('ejercicios/ap3.html.twig', [
+            'alumnos' => $alumnos,
+            'nombre' => $nombre
+        ]);
+    }
 }

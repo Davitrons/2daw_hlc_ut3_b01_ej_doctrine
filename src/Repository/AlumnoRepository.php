@@ -24,4 +24,12 @@ class AlumnoRepository extends ServiceEntityRepository
             ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.nombre != 'María'")
             ->getResult();
     }
+
+    public function findNombre(string $nombre) : array
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.nombre = :name")
+            ->setParameter('name', $nombre)
+            ->getResult();
+    }
 }
