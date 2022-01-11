@@ -42,4 +42,15 @@ class EjerciciosController extends AbstractController
             'nombre' => $nombre
         ]);
     }
+
+    /**
+     * @Route("/ap4", name="apartado4")
+     */
+    public function alumnosOjeda(AlumnoRepository $alumnoRepository): Response
+    {
+        $alumnos = $alumnoRepository->findPrimerApellido('Ojeda');
+        return $this->render('ejercicios/ap4.html.twig', [
+            'alumnos' => $alumnos
+        ]);
+    }
 }

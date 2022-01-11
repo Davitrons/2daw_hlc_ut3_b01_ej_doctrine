@@ -32,4 +32,11 @@ class AlumnoRepository extends ServiceEntityRepository
             ->setParameter('name', $nombre)
             ->getResult();
     }
+    public function findPrimerApellido(string $apellido) : array
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.apellidos LIKE :apellidos")
+            ->setParameter('apellidos', $apellido . '%')
+            ->getResult();
+    }
 }
