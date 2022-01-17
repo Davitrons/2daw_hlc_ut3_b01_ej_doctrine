@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
+use App\Repository\ProfesorRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=ProfesorRepository::class)
  */
 class Profesor
 {

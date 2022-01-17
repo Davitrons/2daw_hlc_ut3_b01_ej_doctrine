@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
+use App\Repository\ParteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=ParteRepository::class)
  */
 class Parte
 {

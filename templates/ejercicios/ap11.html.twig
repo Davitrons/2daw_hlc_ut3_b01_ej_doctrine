@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ejercicios{% endblock %}
+
+{% block body %}
+    <h1>Apartado 11: Profesorado</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesorado %}
+                <tr>
+                    {% set url = path('apartado11_partes', { 'id': profesor.id }) %}
+                    <td><a href="{{ url }}">{{ profesor.nombre }}</a></td>
+                    <td><a href="{{ url }}">{{ profesor.apellidos }}</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
