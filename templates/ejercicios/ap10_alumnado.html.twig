@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ejercicios{% endblock %}
+
+{% block body %}
+    <h1>Apartado 10: Alumnado del grupo {{ grupo.descripcion }}</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Fecha nacimiento</th>
+                <th>Grupo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alumno in alumnos %}
+                <tr>
+                    <td>{{ alumno.nombre }}</td>
+                    <td>{{ alumno.apellidos }}</td>
+                    <td>{{ alumno.fechaNacimiento | date('d/m/Y') }}</td>
+                    <td>{{ alumno.grupo.descripcion }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('apartado10') }}">Volver al listado de grupos</a>
+{% endblock %}

@@ -110,4 +110,31 @@ class EjerciciosController extends AbstractController
             'grupos' => $grupos
         ]);
     }
+
+    /**
+     * @Route("/ap10", name="apartado10")
+     */
+    public function gruposConEnlaces(GrupoRepository $grupoRepository): Response
+    {
+        $grupos = $grupoRepository->findOrdenados();
+        return $this->render('ejercicios/ap10.html.twig', [
+            'grupos' => $grupos
+        ]);
+    }
+
+    /**
+     * @Route("/ap10/{id}", name="apartado10_alumnado")
+     */
+    public function alumnadoConEnlaces(AlumnoRepository $alumnoRepository, GrupoRepository  $grupoRepository, int $id): Response
+    {
+        $grupo = $grupoRepository->find($id);
+        if ($grupo == null) {
+            throw $this->createNotFoundException();
+        }
+        $alumnado = $alumnoRepository->findPorGrupoOrdenados($grupo);
+        return $this->render('ejercicios/ap10_alumnado.html.twig', [
+            'alumnos' => $alumnado,
+            'grupo' => $grupo
+        ]);
+    }
 }
