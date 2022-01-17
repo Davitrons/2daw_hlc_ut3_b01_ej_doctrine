@@ -23,7 +23,7 @@ class GrupoRepository extends ServiceEntityRepository
     public function findOrdenadosDecrecienteConTamanio() : array
     {
         return $this->getEntityManager()
-            ->createQuery("SELECT g, SIZE(g.alumnado) FROM App\\Entity\\Grupo g ORDER BY g.descripcion DESC")
+            ->createQuery("SELECT g as grupo, SIZE(g.alumnado) as tamanio FROM App\\Entity\\Grupo g ORDER BY g.descripcion DESC")
             ->getResult();
     }
 }

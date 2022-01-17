@@ -95,7 +95,6 @@ class EjerciciosController extends AbstractController
     public function gruposOrdenados(GrupoRepository $grupoRepository): Response
     {
         $grupos = $grupoRepository->findOrdenados();
-        //dump($grupos);
         return $this->render('ejercicios/ap8.html.twig', [
             'grupos' => $grupos
         ]);
@@ -107,7 +106,6 @@ class EjerciciosController extends AbstractController
     public function gruposOrdenadosInverso(GrupoRepository $grupoRepository): Response
     {
         $grupos = $grupoRepository->findOrdenadosDecrecienteConTamanio();
-        //dump($grupos);
         return $this->render('ejercicios/ap9.html.twig', [
             'grupos' => $grupos
         ]);
