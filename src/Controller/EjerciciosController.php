@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Grupo;
 use App\Repository\AlumnoRepository;
 use App\Repository\GrupoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -125,12 +126,8 @@ class EjerciciosController extends AbstractController
     /**
      * @Route("/ap10/{id}", name="apartado10_alumnado")
      */
-    public function alumnadoConEnlaces(AlumnoRepository $alumnoRepository, GrupoRepository  $grupoRepository, int $id): Response
+    public function alumnadoConEnlaces(AlumnoRepository $alumnoRepository, Grupo $grupo): Response
     {
-        $grupo = $grupoRepository->find($id);
-        if ($grupo == null) {
-            throw $this->createNotFoundException();
-        }
         $alumnado = $alumnoRepository->findPorGrupoOrdenados($grupo);
         return $this->render('ejercicios/ap10_alumnado.html.twig', [
             'alumnos' => $alumnado,
