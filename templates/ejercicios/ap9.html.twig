@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ejercicios{% endblock %}
+
+{% block body %}
+    <h1>Apartado 8: Grupos ordenados</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Núm. estudiantes</th>
+                <th>Tutor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elemento in grupos %}
+                <tr>
+                    <td>{{ elemento[0].descripcion }}</td>
+                    <td>{{ elemento[1] }}</td>
+                    <td>{{ elemento[0].tutor }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
