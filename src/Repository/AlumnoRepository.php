@@ -53,6 +53,18 @@ class AlumnoRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function countAnioNacimiento(int $anio) : int
+    {
+        $inicio = new \DateTime($anio . '-01-01 00:00:00');
+        $fin = new \DateTime(($anio + 1) . '-01-01 00:00:00');
+
+        return $this->getEntityManager()
+            ->createQuery("SELECT COUNT(a) FROM App\\Entity\\Alumno a WHERE a.fechaNacimiento >= :inicio AND a.fechaNacimiento < :fin")
+            ->setParameter('inicio', $inicio)
+            ->setParameter('fin', $fin)
+            ->getSingleScalarResult();
+    }
+
     public function findAnioNacimientoOrdenado(int $anio) : array
     {
         $inicio = new \DateTime($anio . '-01-01 00:00:00');

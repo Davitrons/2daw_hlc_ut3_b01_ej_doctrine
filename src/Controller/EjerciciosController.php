@@ -67,6 +67,17 @@ class EjerciciosController extends AbstractController
     }
 
     /**
+     * @Route("/ap6", name="apartado6")
+     */
+    public function contarAlumnos1997(AlumnoRepository $alumnoRepository): Response
+    {
+        $numAlumnos = $alumnoRepository->countAnioNacimiento(1997);
+        return $this->render('ejercicios/ap6.html.twig', [
+            'num_alumnos' => $numAlumnos
+        ]);
+    }
+
+    /**
      * @Route("/ap7/{anio}", name="apartado7", requirements={"anio": "\d+"})
      */
     public function alumnosAnioNacimiento(AlumnoRepository $alumnoRepository, int $anio): Response

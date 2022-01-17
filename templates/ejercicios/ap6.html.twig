@@ -3,25 +3,6 @@
 {% block title %}Ejercicios{% endblock %}
 
 {% block body %}
-    <h1>Apartado 6: Alumnado nacido en {{ anio }}</h1>
-    <table border="1px">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellidos</th>
-                <th>Fecha nacimiento</th>
-                <th>Grupo</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for alumno in alumnos %}
-                <tr>
-                    <td>{{ alumno.nombre }}</td>
-                    <td>{{ alumno.apellidos }}</td>
-                    <td>{{ alumno.fechaNacimiento | date('d/m/Y') }}</td>
-                    <td>{{ alumno.grupo.descripcion }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <h1>Apartado 6: Alumnado nacido en 1997</h1>
+    <h2>Hay un total de {{ num_alumnos }} nacidos en 1997</h2>
 {% endblock %}
