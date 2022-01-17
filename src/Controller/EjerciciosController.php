@@ -159,4 +159,15 @@ class EjerciciosController extends AbstractController
             'partes' => $partes
         ]);
     }
+
+    /**
+     * @Route("/ap12", name="apartado12")
+     */
+    public function estudiantesConPartesInvertido(AlumnoRepository $alumnoRepository): Response
+    {
+        $resultado = $alumnoRepository->findPorPartesDecrecientes();
+        return $this->render('ejercicios/ap12.html.twig', [
+            'elementos' => $resultado
+        ]);
+    }
 }

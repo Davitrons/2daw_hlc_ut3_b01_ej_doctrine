@@ -85,4 +85,11 @@ class AlumnoRepository extends ServiceEntityRepository
             ->setParameter('grupo', $grupo)
             ->getResult();
     }
+
+    public function findPorPartesDecrecientes()
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT a AS alumno, SIZE(a.partes) AS total FROM App\\Entity\\Alumno a ORDER BY total DESC")
+            ->getResult();
+    }
 }

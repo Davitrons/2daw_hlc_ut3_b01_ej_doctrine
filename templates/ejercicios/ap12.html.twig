@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ejercicios{% endblock %}
+
+{% block body %}
+    <h1>Apartado 12: Alumnado con número de partes</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Fecha nacimiento</th>
+                <th>Número de partes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for elemento in elementos %}
+                <tr>
+                    <td>{{ elemento.alumno.nombre }}</td>
+                    <td>{{ elemento.alumno.apellidos }}</td>
+                    <td>{{ elemento.alumno.fechaNacimiento | date('d/m/Y') }}</td>
+                    <td>{{ elemento.total }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
