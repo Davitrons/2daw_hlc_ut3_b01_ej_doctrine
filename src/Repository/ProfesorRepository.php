@@ -16,7 +16,7 @@ class ProfesorRepository extends ServiceEntityRepository
     public function findOrdenados() : array
     {
         return $this->getEntityManager()
-            ->createQuery("SELECT p FROM App\\Entity\\Profesor p ORDER BY p.apellidos, p.nombre")
+            ->createQuery("SELECT p, t FROM App\\Entity\\Profesor p LEFT JOIN p.tutoria t ORDER BY p.apellidos, p.nombre")
             ->getResult();
     }
 }
