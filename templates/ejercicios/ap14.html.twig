@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ejercicios{% endblock %}
+
+{% block body %}
+    <h1>Apartado 14: Profesorado sin partes</h1>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesorado %}
+                <tr>
+                    <td>{{ profesor.nombre }}</td>
+                    <td>{{ profesor.apellidos }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">No hay ninguno</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

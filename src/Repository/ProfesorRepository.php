@@ -19,4 +19,11 @@ class ProfesorRepository extends ServiceEntityRepository
             ->createQuery("SELECT p, t FROM App\\Entity\\Profesor p LEFT JOIN p.tutoria t ORDER BY p.apellidos, p.nombre")
             ->getResult();
     }
+
+    public function findSinPartes() : array
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT p FROM App\\Entity\\Profesor p WHERE SIZE(p.partes) = 0")
+            ->getResult();
+    }
 }
