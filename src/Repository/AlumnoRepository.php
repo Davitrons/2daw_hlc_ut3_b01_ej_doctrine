@@ -92,4 +92,11 @@ class AlumnoRepository extends ServiceEntityRepository
             ->createQuery("SELECT a AS alumno, SIZE(a.partes) AS total FROM App\\Entity\\Alumno a ORDER BY total DESC")
             ->getResult();
     }
+
+    public function findSinPartes()
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE SIZE(a.partes) = 0")
+            ->getResult();
+    }
 }

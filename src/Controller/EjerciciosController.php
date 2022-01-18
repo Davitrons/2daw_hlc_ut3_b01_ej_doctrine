@@ -192,4 +192,15 @@ class EjerciciosController extends AbstractController
             'profesorado' => $profesores
         ]);
     }
+
+    /**
+     * @Route("/ap15", name="apartado15")
+     */
+    public function alumnadoSinPartes(AlumnoRepository $alumnoRepository): Response
+    {
+        $alumnado = $alumnoRepository->findSinPartes();
+        return $this->render('ejercicios/ap15.html.twig', [
+            'alumnos' => $alumnado,
+        ]);
+    }
 }
