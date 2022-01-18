@@ -170,4 +170,15 @@ class EjerciciosController extends AbstractController
             'elementos' => $resultado
         ]);
     }
+
+    /**
+     * @Route("/ap13/{texto}", name="apartado13")
+     */
+    public function partesConTexto(ParteRepository $parteRepository, string $texto): Response
+    {
+        $partes = $parteRepository->findByContenidoObservaciones($texto);
+        return $this->render('ejercicios/ap13.html.twig', [
+            'partes' => $partes
+        ]);
+    }
 }

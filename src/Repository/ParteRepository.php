@@ -21,4 +21,12 @@ class ParteRepository extends ServiceEntityRepository
             ->setParameter('profe', $profesor)
             ->getResult();
     }
+
+    public function findByContenidoObservaciones(string $busqueda) : array
+    {
+        return $this->getEntityManager()
+            ->createQuery("SELECT p FROM App\\Entity\\Parte p WHERE p.observaciones LIKE :criterio")
+            ->setParameter('criterio', '%' . $busqueda . '%')
+            ->getResult();
+    }
 }
